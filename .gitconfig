@@ -1,0 +1,11 @@
+[user]
+    email = vrahul24999@gmail.com
+    name = recurze
+
+[core]
+    editor = vim
+
+[merge]
+    tool = vimdiff
+
+[push]

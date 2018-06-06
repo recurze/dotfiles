@@ -1,0 +1,48 @@
+Xterm.vt100.locale:true
+Xterm.vt100.metaSendsEscape:true
+Xterm.vt100.backarrowkey:false
+Xterm.ttymodes:erase ^?
+Xterm.vt100.translations: #override \n\
+    Ctrl <Key>M:maximize() \n\
+    Ctrl <Key>R:restor() \n\
+    Ctrl Shift <Key>V: insert-selection(CLIPBOARD)
+
+XTerm.vt100.savelines: 4096
+XTerm.vt100.scrollBar: false
+XTerm.vt100.selectToClipboard: true
+! special
+*.foreground:   #dcdad7
+*.background:   #060505
+*.cursorColor:  #dcdad7
+
+! black
+*.color0:       #0b0b0a
+*.color8:       #c1e1fa
+
+! red
+*.color1:       #181716
+*.color9:       #e3b6f7
+
+! green
+*.color2:       #292827
+*.color10:      #deacf3
+
+! yellow
+*.color3:       #42413f
+*.color11:      #fdc2d2
+
+! blue
+*.color4:       #625f5d
+*.color12:      #dba858
+
+! magenta
+*.color5:       #888581
+*.color13:      #f6c47c
+
+! cyan
+*.color6:       #b4b0ac
+*.color14:      #fabf60
+
+! white
+*.color7:       #e4e2e0
+*.color15:      #3cc7b3
