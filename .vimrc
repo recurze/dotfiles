@@ -1,16 +1,33 @@
-set nocompatible
+set autoindent
 filetype plugin indent on
 syntax on
 
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set expandtab
+set sta
 
-set ts=4 et ai si ci sw=4 sta
 set backspace=indent,eol,start
+
 set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
-set nu ls=2 list is
-set ar hlsearch ic mh
-set sc smd sm scs
+set list
+
+set number
+set laststatus=2
+set incsearch
+set autoread
+set hlsearch 
+set ignorecase
+set mousehide
+set showmode
+set showmatch
+set smartcase
+set showcmd
+
 set history=2000 ul=100 scrolloff=5
-set tf lazyredraw
+set ttyfast
+set lazyredraw
 set wildmenu
 ret
 
@@ -18,6 +35,7 @@ nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
 nmap <C-k> <C-w>k
 nmap <C-l> <C-w>l
+
 
 nmap <left>  :3wincmd <<cr>
 nmap <right> :3wincmd ><cr>
