@@ -1,6 +1,11 @@
+" colorscheme Tomorrow-Night
+set background=dark
+
 set autoindent
+set wrap
+
 filetype plugin indent on
-syntax on
+syntax enable
 
 set tabstop=4
 set softtabstop=4
@@ -14,6 +19,7 @@ set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
 set list
 
 set number
+set relativenumber
 set laststatus=2
 set incsearch
 set autoread
@@ -25,11 +31,17 @@ set showmatch
 set smartcase
 set showcmd
 
+set ruler
+
+
 set history=2000 ul=100 scrolloff=5
 set ttyfast
 set lazyredraw
 set wildmenu
 ret
+
+set wrap
+set linebreak
 
 nmap <C-h> <C-w>h
 nmap <C-j> <C-w>j
@@ -44,10 +56,18 @@ nmap <down>  :3wincmd -<cr>
 
 nnoremap Q @q
 nnoremap ; :
+nnoremap 0 ^
+nnoremap j gj
+nnoremap k gk
 
 inoremap {<CR> {<CR>}<Esc>O
 inoremap ( ()<Esc>i
 inoremap [ []<Esc>i
+inoremap " ""<Esc>i
+inoremap ' ''<Esc>i
 inoremap jk <Esc>
 imap <Tab> <C-p>
 
+set cursorline
+hi clear CursorLine
+hi CursorLineNR ctermbg=DarkGray
