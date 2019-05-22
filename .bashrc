@@ -6,8 +6,16 @@ c(){
     ls;
 };
 
+npg(){
+    pdfinfo "$1" | grep Pages | grep -o -E '[0-9]+';
+};
+
+play(){
+    vlc "$1" 2>/dev/null &
+};
+
 df(){
-    evince -f "$1" &
+    zathura --mode fullscreen "$1" 2>/dev/null &
 };
 
 bak(){
@@ -19,60 +27,40 @@ restore(){
 };
 
 val(){
-    python2 -c "print eval(str($1))"
-}
+    echo $(($@))
+    #python2 -c "print eval(str($@))"
+};
 
 stripdf(){
     pdftk "$1" cat "$2"-"$3" output "$4".pdf;
     echo pdftk "$1" cat "$2"-"$3" output "$4".pdf;
 }
 
-competein(){
-    mkdir ~/summer/comp/contest/${1}
-    cd ~/summer/comp/contest/${1}
-    cp ../cpptemp.cpp .
-    mkdir aa bb cc dd ee
-    alias aa="..; cd aa"
-    alias bb="..; cd bb"
-    alias cc="..; cd cc"
-    alias dd="..; cd dd"
-
-    source ~/scripts/comp.sh;
-};
+ansi()          { echo -e "\e[${1}m${2}\e[0m"; };
+bold()          { ansi 1 "$1"; };
+italic()        { ansi 3 "$1"; };
+underline()     { ansi 4 "$1"; };
+strikethrough() { ansi 9 "$1"; };
 
 alias ..="c .."
 alias ...="c ../.."
 alias ....="c ../../.."
 
-alias ct="date +%T"
+#alias ct="date +%T"
 alias p="pwd"
 alias size="du -sbh"
 alias vi="vim"
-alias ff="firefox &"
-alias bye="poweroff"
+alias ff="firefox 2>/dev/null &"
 alias restartgui="nohup cinnamon --replace > /dev/null 2>&1"
-alias bt="bluetoothctl <<< \"connect D0:8A:55:61:08:56\""
 alias op="xdg-open"
+alias c2pdf="libreoffice --headless --invisible --convert-to pdf"
 
-alias install="sudo pacman -S"
-alias remove="sudo pacman -Runs"
-alias upgrade="sudo pacman -Syy"
-alias update="sudo pacman -Syu"
-
-alias ml="c ~/summer/ml"
-alias ai="c ~/summer/ai"
-alias wd="c ~/summer/wd"
-alias comp="c ~/summer/comp"
-alias thoughts="vim \"+normal Go\" ~/summer/.thoughts"
-alias log="vi ~/summer/.log"
-alias scenarios="vi ~/summer/.scenarios"
+alias dl="aria2c --file-allocation=none -c -x 10 -s 10 -d ."
 
 set -o vi
 bind "TAB:menu-complete"
 
-PS1="\t|\$(~/scripts/batstatus.sh)%| \W>"
-
-
-alias sl="ls"
-alias l="ls"
-alias amke="make"
+#PS_TIME="\033[01;31m\]\t\033[0m"
+PS_TIME="\t"
+#PS1=$PS_TIME"|\033[01;32m\]\$(~/scripts/batstatus.sh)%\033[0m| \033[01;33m\]\W\033[0m>"
+PS1=$PS_TIME"|\$(~/scripts/batstatus.sh)%| \W>"
