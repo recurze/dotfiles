@@ -64,3 +64,5 @@ bind "TAB:menu-complete"
 PS_TIME="\t"
 #PS1=$PS_TIME"|\033[01;32m\]\$(~/scripts/batstatus.sh)%\033[0m| \033[01;33m\]\W\033[0m>"
 PS1=$PS_TIME"|\$(~/scripts/batstatus.sh)%| \W>"
+
+HISTTIMEFORMAT=': %d/%m %T '
