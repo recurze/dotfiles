@@ -1,105 +1,88 @@
-" colorscheme Tomorrow-Night
-set background=dark
+set nocompatible
+
+syntax on
+filetype plugin indent on
+
+set autoread
 
 set autoindent
-set wrap
-
-filetype plugin indent on
-filetype indent on
-syntax on
-
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
 set expandtab
-set sta
+set tabstop=4
+set shiftwidth=4
 
+set hidden
 set backspace=indent,eol,start
 
-set listchars=eol:¬,tab:>·,trail:~,extends:>,precedes:<
-set list
-
-set number
-set relativenumber
-set laststatus=2
-set incsearch
-set autoread
-set hlsearch
-""set ignorecase
-""set mousehide
-""set showmode
-set showmatch
-set smartcase
-set showcmd
-
+set history=200
+set textwidth=72
+set wrap
 set ruler
+set wildmenu
 
-set history=2000 ul=100 scrolloff=5
+set hlsearch
+set incsearch
+
+set ttimeout
+set ttimeoutlen=100
+
 set ttyfast
 set lazyredraw
-set wildmenu
-ret
 
-set wrap
-set linebreak
+set splitbelow
+set splitright
 
-set nrformats=
+set list
+set listchars=tab:»·,trail:~,extends:>,precedes:<
 
-nmap <C-h> <C-w>h
-nmap <C-j> <C-w>j
-nmap <C-k> <C-w>k
-nmap <C-l> <C-w>l
-
-
-nmap <left>  :3wincmd <<cr>
-nmap <right> :3wincmd ><cr>
-nmap <up>    :3wincmd +<cr>
-nmap <down>  :3wincmd -<cr>
+nmap <up>    :3wincmd +<CR>
+nmap <down>  :3wincmd -<CR>
+nmap <left>  :3wincmd <<CR>
+nmap <right> :3wincmd ><CR>
 
 nnoremap Q @q
-"noremap ; :
-nnoremap 0 ^
 nnoremap j gj
 nnoremap k gk
-nnoremap t :NERDTree<CR>
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
-nnoremap <silent> <F9> :w <CR> :make %<<CR>
-nnoremap <silent> <F8> :w <CR> :make %<<CR> :!./%<
 
-inoremap {<CR> {<CR>}<Esc>O
-inoremap ( ()<Esc>i
-inoremap [ []<Esc>i
-inoremap " ""<Esc>i
-inoremap ' ''<Esc>i
-inoremap jk <Esc>
 imap <Tab> <C-p>
+inoremap {<CR> {<CR>}<Esc>O
 
-" Surround with
-vnoremap ( c(<Esc>pi)<Esc>
-vnoremap { c{<Esc>pi}<Esc>
-vnoremap " c"<Esc>pi"<Esc>
-vnoremap ' c'<Esc>pi'<Esc>
+vnoremap ( c()<ESC>Pf)
+vnoremap { c{}<ESC>Pf)
+vnoremap " c""<ESC>Pf)
+vnoremap ' c''<ESC>Pf)
 
-" For latex
-vnoremap <C-b> c\textbf{<Esc>pi}<Esc>
-vnoremap <C-i> c\emph{<Esc>pi}<Esc>
+set number
+highlight LineNr ctermfg=Gray
+"highlight CursorLineNr ctermfg=Red ctermbg=Black
 
-set cursorline
-hi clear CursorLine
-hi CursorLineNR ctermbg=DarkGray
+augroup vimStartup
+    au!
+    autocmd BufReadPost *
+    \ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit'
+    \ |   exe "normal! g`\""
+    \ | endif
+augroup END
 
-let g:header_auto_add_header=0
-let g:header_field_author='recurze'
-map <F4> :AddHeader<CR>
+augroup vimrcEx
+    au!
+    autocmd FileType text setlocal tw=72
+augroup END
 
-let g:tex_flavor = 'pdflatex'
+if has("vms")
+    set nobackup
+else
+    set backup
+    if has('persistent_undo')
+        set undofile
+    endif
+endif
 
-let $CXX="g++"
-let $CXXFLAGS='-std=c++14 -Wall -Wextra -Wconversion'
-set efm^=%-G%f:%l:\ warning:%m
-set efm^=%-G%f:%l:\ make*:%m
+nnoremap <silent> <F5> :w<CR>:!md % > %<.html<CR><CR>
 
-set colorcolumn=81
-highlight ColorColumn ctermbg=DarkGray
+"inoremap jj <Esc>/<++><CR><Esc>cf>
+"inoremap ( ()<++><Esc>4hi
+"inoremap [ []<++><Esc>4hi
+"inoremap { {}<++><Esc>4hi
+"
+"inoremap ;f for (<++>; <++>; <++>) {<CR><++><CR>}<Esc>2kf<cf>
 
-let NERDTreeShowLineNumbers=1
