@@ -15,7 +15,7 @@ set hidden
 set backspace=indent,eol,start
 
 set history=200
-set textwidth=72
+set textwidth=68
 set wrap
 set ruler
 set wildmenu
@@ -44,7 +44,7 @@ nnoremap Q @q
 nnoremap j gj
 nnoremap k gk
 
-imap <Tab> <C-p>
+imap <Tab> <C-n>
 inoremap {<CR> {<CR>}<Esc>O
 
 vnoremap ( c()<ESC>Pf)
@@ -66,7 +66,7 @@ augroup END
 
 augroup vimrcEx
     au!
-    autocmd FileType text setlocal tw=72
+    autocmd FileType text setlocal tw=68
 augroup END
 
 if has("vms")
@@ -80,6 +80,8 @@ endif
 
 nnoremap <silent> <F5> :w<CR>:!md % > %<.html<CR><CR>
 
+"autocmd BufWinLeave *.* mkview
+"autocmd BufWinEnter *.* silent loadview
 "inoremap jj <Esc>/<++><CR><Esc>cf>
 "inoremap ( ()<++><Esc>4hi
 "inoremap [ []<++><Esc>4hi

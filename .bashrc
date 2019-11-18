@@ -32,9 +32,12 @@ batstatus(){
     echo -e ${P}%
 }
 
+rem(){
+    mv $@ ~/.trash
+}
+
 colors(){
-    for C in {0..255}
-    do
+    for C in {0..255}; do
         tput setab $C;
         echo -n "$C "
     done
@@ -52,11 +55,13 @@ alias vi="vim"
 alias sz="du -sbh"
 alias op="xdg-open"
 alias ff="firefox 2>/dev/null &"
+alias img="feh 2>/dev/null"
 alias mus="mpv --no-video"
 alias c2pdf="libreoffice --headless --invisible --convert-to pdf"
 alias restartgui="nohup cinnamon --replace > /dev/null 2>&1"
 
 alias dl="aria2c --file-allocation=none -c -x 10 -s 10 -d ."
+alias ydl="youtube-dl -f 'bestvideo[height<=480]+bestaudio'"
 
 set -o vi
 bind "TAB:menu-complete"
@@ -69,4 +74,5 @@ LIGHTGREEN="$(tput setab 30)"
 PRUSSIAN="$(tput setab 17)"
 GREY="$(tput setab 245)"
 
-PS1='${BLACK}\t ${RESET}${PRUSSIAN} $(batstatus) ${RESET}${LIGHTGREEN}\! ${RESET}${RED}\w${RESET}\n${GREY}$ ${RESET}'
+#PS1='${BLACK}\t ${RESET}${PRUSSIAN} $(batstatus) ${RESET}${LIGHTGREEN}\! ${RESET}${RED}\w${RESET}\n${GREY}$ ${RESET}'
+PS1='\t | $(batstatus) | \! | \w\n$ '
