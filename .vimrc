@@ -15,7 +15,7 @@ set hidden
 set backspace=indent,eol,start
 
 set history=200
-set textwidth=68
+set textwidth=72
 set wrap
 set ruler
 set wildmenu
@@ -66,15 +66,18 @@ augroup END
 
 augroup vimrcEx
     au!
-    autocmd FileType text setlocal tw=68
+    autocmd FileType text setlocal tw=72
 augroup END
 
+set directory=$HOME/.vim/swapfiles//
 if has("vms")
     set nobackup
 else
     set backup
+    set backupdir=~/.vim/backupfiles
     if has('persistent_undo')
         set undofile
+        set undodir=~/.vim/undofiles
     endif
 endif
 
