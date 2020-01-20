@@ -15,7 +15,7 @@ set hidden
 set backspace=indent,eol,start
 
 set history=200
-set textwidth=72
+set textwidth=80
 set wrap
 set ruler
 set wildmenu
@@ -67,6 +67,11 @@ augroup END
 augroup vimrcEx
     au!
     autocmd FileType text setlocal tw=72
+augroup END
+
+augroup auFileTypes
+    autocmd!
+    autocmd FileType markdown setlocal tw=80
 augroup END
 
 set directory=$HOME/.vim/swapfiles//
