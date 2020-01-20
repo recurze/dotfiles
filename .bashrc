@@ -6,7 +6,7 @@ export EDITOR
 
 c(){
     cd "$1";
-    ls;
+    ls -p;
 };
 
 df(){
@@ -22,7 +22,8 @@ restore(){
 };
 
 val(){
-    echo $(($@))
+    python3 -c "print($@)"
+    #echo $(($@))
 }
 
 batstatus(){
@@ -30,6 +31,20 @@ batstatus(){
     STAT=$(upower -i ${BAT})
     P=$(upower -i ${BAT} | grep percentage | sed 's/[^0-9]*//g')
     echo -e ${P}%
+}
+
+c2(){
+    libreoffice --headless --invisible --convert-to $@ >/dev/null 2>/dev/null
+}
+
+alert(){
+    if [ $? -eq 0 ]; then
+        msg=Completed
+    else
+        msg=Error
+    fi
+    cmd="$(history|tail -n1|sed -e 's/^\s*[0-9]\+\s*//'|sed -e 's/[;&|]\s*alert$//')"
+    notify-send "$cmd" "$msg"
 }
 
 rem(){
@@ -49,7 +64,7 @@ alias ..="c .."
 alias ...="c ../.."
 alias ....="c ../../.."
 
-alias l="ls"
+alias ls="ls -p"
 alias p="pwd"
 alias vi="vim"
 alias sz="du -sbh"
@@ -62,6 +77,8 @@ alias restartgui="nohup cinnamon --replace > /dev/null 2>&1"
 
 alias dl="aria2c --file-allocation=none -c -x 10 -s 10 -d ."
 alias ydl="youtube-dl -f 'bestvideo[height<=480]+bestaudio'"
+
+alias python=python3
 
 set -o vi
 bind "TAB:menu-complete"
