@@ -1,0 +1,13 @@
+colors(){
+    for C in {0..255}; do
+        tput setab $C;
+        echo -n "$C "
+    done
+    tput sgr0
+    echo
+}
+
+RESET="$(tput sgr0)"
+RED="$(tput setab 160)"
+
+PS1='\t | $(batstatus) | \! | \w\n$ '
