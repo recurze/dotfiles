@@ -1,0 +1,9 @@
+setxkbmap -option caps:swapescape
+xmodmap -e 'keycode 63='
+
+xinput set-prop 12 327 1
+xinput set-prop 12 309 1
+
+~/.fehbg &
+sakura -s &
+firefox 2>/dev/null &
