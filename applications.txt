@@ -1,0 +1,32 @@
+System:
+    Operating System: Arch Linux
+    Window Manager  : Openbox
+
+Internet:
+    Web Browser: Firefox
+    (Add-ons: Cookie AutoDelete, Decentraleyes,
+    Firefox Multi-Account Containers, Privacy Badger, RES,
+    small-clock, To Google Translate, uBlock Origin)
+    Download managers: aria2, wget
+    Email client:
+
+Multimedia:
+    Image Viewer: feh
+    Music Player: mpv
+    Video Player: mpv
+
+Utilities:
+    Terminal:
+        Terminal emulator    : sakura
+        Command-line shell   : bash
+        Terminal multiplexer : tmux
+
+    Development:
+        Version Control: git
+        Debuggers      : gdb
+
+Documents and texts:
+    Text Editor: vim (Plugins: )
+    Office: libreoffice
+    PDF Viewer: zathura
+    (Plugins: zathura-djvu, zathura-ps, zathura-pdf-mupdf)
