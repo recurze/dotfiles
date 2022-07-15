@@ -5,11 +5,12 @@ alias ....="c ../../.."
 alias ps='ps -A'
 alias du='du -sbh'
 alias ls='ls -ph'
-alias mpv='mpv --sub-file-paths=.:subs'
+alias mpv='mpv --save-position-on-quit --sub-file-paths=.:subs'
 alias diff='diff -N'
 alias free='free -ht'
 alias mkdir='mkdir -p'
 alias aria2c='aria2c --file-allocation=none -c -x 10 -s 10 -d .'
+alias vpn="expressvpn"
 alias ydl="youtube-dl --write-sub --sub-lang en -f 'bestvideo[height<=480]+bestaudio'"
 
 alias vi='vim'

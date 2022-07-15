@@ -29,3 +29,13 @@ alert(){
     notify-send "$cmd" "$msg"
 }
 
+run() {
+    g++ -pg -DLOCAL -std=c++17 -Wall -Wextra -Wshadow -Wconversion -Wunused -Wreorder -Woverflow -pedantic -fsanitize=address -fsanitize=undefined $1.cpp && ./a.out
+}
+
+prep() {
+    dir=$1
+    cd ~/ && \mkdir $dir && cd $dir
+    cp ~/Competitive-Programming/copy_me.cpp $dir/
+    for i in a b c d; do cp ~/Competitive-Programming/copy_me.cpp $i.cpp; done
+}
