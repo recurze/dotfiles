@@ -80,15 +80,40 @@ if has("vms")
     set nobackup
 else
     set backup
-    set backupdir=~/.vim/backupfiles
+    set backupdir=~/.vim/backupfiles//
     if has('persistent_undo')
         set undofile
-        set undodir=~/.vim/undofiles
+        set undodir=~/.vim/undofiles//
     endif
 endif
 
 nnoremap <silent> <F5> :w<CR>:!md % > %<.html<CR><CR>
 
+function! Grep(...)
+    let l:opt = a:0 == 3 ? a:1 : ''
+    let l:pat = a:0 == 3 ? a:2 : a:0 == 0 ? @/ : a:1
+    let l:files = a:0 == 3 ? a:3 : a:0 == 2 ? a:2 : ''
+    let l:cmd = 'silent! grep! ' . l:opt . ' "' . l:pat . '" `git ls-files ' . l:files . '`'
+    execute l:cmd | redraw! | copen
+endfunction
+command! -nargs=* Grep call Grep(<f-args>)
+
+nnoremap [q :cprev<CR>
+nnoremap ]q :cnext<CR>
+
+function! QFMapping()
+    let maplocalleader='\'
+    nnoremap <buffer> <Tab> <CR>zz<C-w>w
+    nnoremap <buffer> <LocalLeader>w :cgetbuffer<CR>
+endfunction
+
+augroup qf_group
+    au!
+    autocmd BufReadPost quickfix set modifiable
+    autocmd FileType qf call QFMapping()
+augroup END
+
+cnoremap <C-g> <C-r>"
 "autocmd BufWinLeave *.* mkview
 "autocmd BufWinEnter *.* silent loadview
 "inoremap jj <Esc>/<++><CR><Esc>cf>
@@ -98,3 +123,10 @@ nnoremap <silent> <F5> :w<CR>:!md % > %<.html<CR><CR>
 "
 "inoremap ;f for (<++>; <++>; <++>) {<CR><++><CR>}<Esc>2kf<cf>
 
+let g:fzf_action = {
+  \ 'ctrl-t': 'tab split',
+  \ 'ctrl-j': 'split',
+  \ 'ctrl-l': 'vsplit' }
+
+command! -bang -complete=dir -nargs=? Files
+    \ call fzf#run(fzf#wrap({'source': 'git ls-files', 'dir': <q-args>}, <bang>0))
