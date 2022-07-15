@@ -5,8 +5,7 @@ System:
 Internet:
     Web Browser: Firefox
     (Add-ons: Cookie AutoDelete, Decentraleyes,
-    Firefox Multi-Account Containers, Privacy Badger, RES,
-    small-clock, To Google Translate, uBlock Origin)
+    ExpressVPN, small-clock, uBlock Origin)
     Download managers: aria2, wget
     Email client:
 
@@ -26,7 +25,7 @@ Utilities:
         Debuggers      : gdb
 
 Documents and texts:
-    Text Editor: vim (Plugins: )
+    Text Editor: vim (Plugins: fzf)
     Office: libreoffice
     PDF Viewer: zathura
     (Plugins: zathura-djvu, zathura-ps, zathura-pdf-mupdf)
