@@ -30,31 +30,14 @@ map('n', 'Q', '@q')
 map('n', 'j', 'gj')
 map('n', 'k', 'gk')
 
--- Cycle through tags
+-- Cycle through tabs
 map('n', 'th', ':tabp<CR>')
 map('n', 'tl', ':tabn<CR>')
 map('n', 't0', ':tabl<CR>')
 map('n', 't1', ':tabfirst<CR>')
 
 map('i', '{<CR>', '{<CR>}<Esc>O')
-map('i', '<Tab>',
-    function()
-        local str = vim.api.nvim_get_current_line()
-        local col = vim.api.nvim_win_get_cursor(0)[2]
-        if (col == 0 or str:sub(col, col):match('%s')) then
-            -- Prev char was space; don't complete
-            return '<Tab>'
-        elseif vim.fn.pumvisible() == 1 then
-            -- Pop up menu visible, cycle through the options
-            return '<C-N>'
-        else
-            -- Trigger omnifunc (should be provided by lsp)
-            -- Option for other <C-X> completions ?
-            return '<C-X><C-O>'
-        end
-    end,
-    { expr = true }
-)
+-- See tab completion in commands.lua
 
 -- surround selected area
 map('v', '(', 'c()<Esc>Pf)')

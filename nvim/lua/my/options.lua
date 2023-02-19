@@ -15,8 +15,6 @@ vim.opt.wrap = true
 vim.opt.number = true
 vim.opt.lazyredraw = true
 
-vim.opt.errorformat:append("%f|%l col %c|%m")
-
 -- We have git
 vim.opt.swapfile = false
 -- But just in case
