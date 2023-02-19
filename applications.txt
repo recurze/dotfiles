@@ -7,7 +7,7 @@ Internet:
     (Add-ons: Cookie AutoDelete, Decentraleyes,
     ExpressVPN, small-clock, uBlock Origin)
     Download managers: aria2, wget
-    Email client:
+    Email client: Web
 
 Multimedia:
     Image Viewer: feh
@@ -16,7 +16,7 @@ Multimedia:
 
 Utilities:
     Terminal:
-        Terminal emulator    : sakura
+        Terminal emulator    : st
         Command-line shell   : bash
         Terminal multiplexer : tmux
 
@@ -25,7 +25,7 @@ Utilities:
         Debuggers      : gdb
 
 Documents and texts:
-    Text Editor: vim (Plugins: fzf)
+    Text Editor: neovim (Plugins: fzf, treesitter, lsp)
     Office: libreoffice
     PDF Viewer: zathura
     (Plugins: zathura-djvu, zathura-ps, zathura-pdf-mupdf)
