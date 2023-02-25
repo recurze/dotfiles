@@ -1,3 +1,16 @@
+vim.cmd('cabbr vf vert sf')
+vim.cmd('cabbr vb vert sb')
+
+-- Switch to file with same basename but different extension
+vim.cmd('cabbr E e %<')
+vim.cmd('cabbr V vs %<')
+
+vim.cmd('cabbr F GFiles') -- uses dir of %, not pwd
+vim.cmd('cabbr Fa Files')
+-- Other useful fzf commands: Commits, BCommits
+
+vim.api.nvim_create_user_command('Blame', ':vne | r !git blame #', {})
+
 -- Clever Tab
 vim.keymap.set('i', '<Tab>',
     function()
@@ -26,25 +39,6 @@ vim.keymap.set('i', '<Tab>',
     end,
     {expr = true}
 )
-
--- wget https://raw.githubusercontent.com/junegunn/fzf/master/plugin/fzf.vim -O ~/.config/nvim/autoload/fzf.vim
-vim.api.nvim_create_user_command('F',
-    "call fzf#run(fzf#wrap({'source': 'git ls-files', 'dir': <q-args>}, <bang>0))",
-    {nargs = '?', bang = true}
-)
-
-vim.api.nvim_create_user_command('Fa',
-    "call fzf#run(fzf#wrap({'source': 'find', 'dir': <q-args>}, <bang>0))",
-    {nargs = '?', bang = true}
-)
-
--- too lazy to figure out lua for this
-vim.cmd([[
-let g:fzf_action = {
-  \ 'ctrl-t': 'tab split',
-  \ 'ctrl-x': 'split',
-  \ 'ctrl-v': 'vsplit' }
-]])
 
 -- Git Grep is fast enough to not require Async
 vim.opt.grepprg = 'git grep -I --line-number'

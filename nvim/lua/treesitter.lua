@@ -52,6 +52,7 @@ require'nvim-treesitter.configs'.setup {
 
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevel = 2
 
 -- Make it normal mode map if used enough
 vim.api.nvim_create_user_command('SwapP', "TSTextobjectSwapNext @parameter.inner", {})
