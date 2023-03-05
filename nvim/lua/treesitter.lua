@@ -8,7 +8,8 @@ require'nvim-treesitter.configs'.setup {
     },
 
     indent = {
-        enable = true
+        -- gets it wrong too often
+        enable = false
     },
 
     textobjects = {
@@ -50,9 +51,11 @@ require'nvim-treesitter.configs'.setup {
     }
 }
 
-vim.opt.foldmethod = 'expr'
-vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+-- It's great but is heavy
+-- vim.opt.foldmethod = 'expr'
+-- vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
 vim.opt.foldlevel = 2
+vim.opt.foldmethod = 'indent'
 
 -- Make it normal mode map if used enough
 vim.api.nvim_create_user_command('SwapP', "TSTextobjectSwapNext @parameter.inner", {})
