@@ -11,6 +11,10 @@ vim.cmd('cabbr Fa Files')
 
 vim.api.nvim_create_user_command('Blame', ':vne | r !git blame #', {})
 
+function FallbackTab()
+    return vim.fn.pumvisible() == 1 and '' or vim.api.nvim_replace_termcodes('<C-X><C-I>', true, true, true)
+end
+
 -- Clever Tab
 vim.keymap.set('i', '<Tab>',
     function()
@@ -30,8 +34,8 @@ vim.keymap.set('i', '<Tab>',
             -- Complete file name
             return '<C-X><C-F>'
         elseif vim.api.nvim_buf_get_option(0, 'omnifunc') ~= '' then
-            -- Trigger omnifunc (hopefully by lsp)
-            return '<C-X><C-O>'
+            -- Trigger omnifunc (hopefully by lsp) or fallback
+            return '<C-X><C-O><C-R>=v:lua.FallbackTab()<CR>'
         else
             -- Complete words from current buffer and included files
             return '<C-X><C-I>'
