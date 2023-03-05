@@ -15,8 +15,7 @@ vim.opt.wrap = true
 vim.opt.relativenumber = true
 vim.opt.lazyredraw = true
 
--- My precious screen estate
-vim.opt.cmdheight = 0
+vim.opt.shortmess = "atTIcCS"
 vim.opt.ruler = false
 
 vim.opt.mouse = ""

@@ -5,8 +5,8 @@ vim.cmd('cabbr vb vert sb')
 vim.cmd('cabbr E e %<')
 vim.cmd('cabbr V vs %<')
 
-vim.cmd('cabbr F GFiles') -- uses dir of %, not pwd
-vim.cmd('cabbr Fa Files')
+vim.keymap.set('n', ' f', ':GFiles<CR>') -- uses dir of %, not pwd
+vim.keymap.set('n', ' a', ':Files<CR>')
 -- Other useful fzf commands: Commits, BCommits
 
 vim.api.nvim_create_user_command('Blame', ':vne | r !git blame #', {})
@@ -54,6 +54,7 @@ vim.api.nvim_create_user_command('Gg',
     'silent! grep! <cword> | redraw!',
     {nargs = '*', complete = 'dir'}
 )
+vim.keymap.set('n', ' g', ':Gg<CR>')
 
 -- Async; inspired by https://gist.github.com/phelipetls/639a1b5f021d17c4124cccc83e518566
 _G.job_id = 0
