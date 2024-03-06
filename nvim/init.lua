@@ -7,6 +7,7 @@ require('my.mappings')
 require('plugins')
 require('treesitter')
 require('lsp')
+require('vimtex')
 
 -----------------------------------------------------------------------
 --  Guide:

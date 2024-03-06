@@ -1,20 +1,10 @@
-function seek_last_cursor_pos()
-    vim.cmd([[ if line("'\"") >= 1 && line("'\"") <= line("$") && &ft !~# 'commit' | exe "normal! g`\"" | endif ]]);
-end
-
-local startup = vim.api.nvim_create_augroup('startup', { clear = true })
-vim.api.nvim_create_autocmd({'BufReadPost'}, {
-  pattern = '*',
-  group = startup,
-  callback = function() seek_last_cursor_pos() end,
-})
-
 local filetypes = vim.api.nvim_create_augroup('filetypes', { clear = true })
 vim.api.nvim_create_autocmd({'BufReadPost'}, {
-  pattern = {'text', 'markdown'},
+  pattern = {'*.txt', '*.md', '*.tex'},
   group = filetypes,
   command = 'setlocal textwidth=120',
 })
+
 
 -- Quickfix window AU
 function QFMappings()
@@ -42,4 +32,18 @@ vim.api.nvim_create_autocmd({'FileType'}, {
   pattern = 'qf',
   group = quickfix,
   callback = function() QFMappings() end,
+})
+
+
+function LatexStuff()
+    vim.opt.foldmethod = 'expr'
+    vim.opt.foldexpr = 'vimtex#fold#level(v:lnum)'
+    vim.opt.foldtext = 'vimtex#fold#text()'
+end
+
+local latex = vim.api.nvim_create_augroup('latex', { clear = true })
+vim.api.nvim_create_autocmd({'FileType'}, {
+  pattern = 'tex',
+  group = latex,
+  callback = function() LatexStuff() end,
 })
