@@ -21,7 +21,7 @@ vim.api.nvim_create_autocmd({'VimEnter'}, {
 vim.api.nvim_create_autocmd({'QuickFixCmdPost'}, {
   pattern = '[^l]*',
   group = quickfix,
-  command = 'copen | set modifiable',
+  command = 'cwindow | set modifiable',
 })
 vim.api.nvim_create_autocmd({'BufReadPost'}, {
   pattern = 'quickfix',
