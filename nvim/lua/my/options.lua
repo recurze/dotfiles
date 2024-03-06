@@ -18,8 +18,14 @@ vim.opt.lazyredraw = true
 vim.opt.shortmess = "atTIcCS"
 vim.opt.ruler = false
 
+vim.opt.clipboard = "unnamedplus"
+
 vim.opt.mouse = ""
 vim.opt.completeopt = { "menuone", "longest" }
+
+-- Disable folding at startup
+vim.opt.foldenable = false
+-- Set foldmethod/expr in fold.lua
 
 -- We have git
 vim.opt.swapfile = false
