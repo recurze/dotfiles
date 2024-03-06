@@ -37,7 +37,6 @@ map('n', 't0', ':tabl<CR>')
 map('n', 't1', ':tabfirst<CR>')
 
 map('i', '{<CR>', '{<CR>}<Esc>O')
--- See tab completion in commands.lua
 
 -- surround selected area
 map('v', '(', 'c()<Esc>Pf)')
