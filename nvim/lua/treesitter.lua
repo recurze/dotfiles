@@ -1,10 +1,11 @@
 require'nvim-treesitter.configs'.setup {
     auto_install = false,
-    ensure_installed = { "cpp", "python", "sql" },
+    ensure_installed = { "cpp", "python", "sql", "latex" },
 
     highlight = {
+        -- enabling this disables syntax, so fdm=syntax won't work.
         enable = true,
-        additional_vim_regex_highlighting = false, -- disable :help syntax
+        additional_vim_regex_highlighting = false, -- provided by syntax
     },
 
     indent = {

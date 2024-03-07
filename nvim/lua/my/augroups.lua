@@ -35,15 +35,26 @@ vim.api.nvim_create_autocmd({'FileType'}, {
 })
 
 
-function LatexStuff()
-    vim.opt.foldmethod = 'expr'
-    vim.opt.foldexpr = 'vimtex#fold#level(v:lnum)'
-    vim.opt.foldtext = 'vimtex#fold#text()'
+function LatexMappings()
+    -- close environments
+    vim.api.nvim_buf_set_keymap(0, 'i', '}e', '}<Esc>yyplcwend<Esc>O', { noremap = true })
+
+    -- override completion to simply use keywords from current file
+    vim.keymap.set('i', '<Tab>',
+        function()
+            if vim.fn.pumvisible() == 1 then
+                -- Pop up menu visible; cycle through the options
+                return '<C-N>'
+            end
+            return '<C-X><C-N>'
+        end,
+        { noremap = true, buffer = true, expr = true }
+    )
 end
 
 local latex = vim.api.nvim_create_augroup('latex', { clear = true })
 vim.api.nvim_create_autocmd({'FileType'}, {
   pattern = 'tex',
   group = latex,
-  callback = function() LatexStuff() end,
+  callback = function() LatexMappings() end,
 })

@@ -5,5 +5,4 @@ require "paq" {
     { 'neovim/nvim-lspconfig' },
     { 'junegunn/fzf', run = function() vim.fn['fzf#install']() end },
     { 'junegunn/fzf.vim' },
-    { 'lervag/vimtex' },
 }
