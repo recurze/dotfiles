@@ -39,3 +39,28 @@ prep() {
     cp ~/Competitive-Programming/copy_me.cpp $dir/
     for i in a b c d; do cp ~/Competitive-Programming/copy_me.cpp $i.cpp; done
 }
+
+vpn() {
+    cmd=$1
+    if [ $cmd == "countries" ]; then
+        mullvad relay list | \grep -E '^[A-Z].*'
+    elif [ $cmd == "connect" ]; then
+        mullvad relay set location $2 && mullvad connect --wait
+    elif [ $cmd == "status" ]; then
+        mullvad status
+    else
+        mullvad $@
+    fi
+}
+
+# cutting pdfs from page 12-15
+#pdftk input.pdf cat 12-15 output output.pdf
+
+# image to pdf
+#img2pdf --pagesize A4 -o multipage.pdf *.jpeg
+
+# combine pdfs
+#pdfunite in1.pdf in2.pdf out.pdf
+
+# test camera
+#mpv av://v4l2:/dev/video0 --profile=low-latency --untimed
