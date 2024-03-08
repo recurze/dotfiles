@@ -1,3 +1,4 @@
+-- Ref: https://learnvimscriptthehardway.stevelosh.com/chapters/49.html
 -- Why? Multi-line function signatures and template C++. So my own logic.
 --
 -- Notice inconsistencies in indexing:
