@@ -86,9 +86,9 @@
     </action>
   </item>
 -->
-  <item label="Sakura">
+  <item label="st">
     <action name="Execute">
-      <command>sakura -s</command>
+      <command>st</command>
       <startupnotify>
         <enabled>yes</enabled>
       </startupnotify>
